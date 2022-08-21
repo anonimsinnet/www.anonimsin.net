@@ -1,0 +1,122 @@
+:root {
+    --bg-g: #11151A;
+    --bg-1: #222831;
+    --bg-2: #393E46;
+    --bg-3: #202733;
+    --bg-4: #111621;
+    --bd: #2f324380;
+    --bg-m: #00ADB5;
+    --color: #EEEEEE;
+    --link: aqua
+}
+
+* {
+    margin: 0;
+    color: var(--color);
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif
+}
+
+body { background-color: var(--bg-1); margin: 0; overflow: overlay }
+a:link { color: var(--link) }
+a:visited { color: var(--link) }
+
+button, input { border: none; border-radius: 5px; transition: .3s; padding: 5px; background-color: var(--bg-1); cursor: pointer }
+button:hover { filter: brightness(120%) }
+button:active { filter: brightness(140%) }
+
+.inline-img { display: inline-flex; align-items: center }
+.inline-img svg, .inline-img img { height: 1em }
+
+
+/* #region LOADING */
+@keyframes inital-load-animation { 0% { transform: translateX(-10px) } 50% { transform: translateX(310px) } 100% { transform: translateX(-10px) } }
+#initial-loading { width: 100%; height: 100%; position: absolute; background-color: inherit; padding: 10px; z-index: 100; transition: .3s }
+#initial-loading > div { margin-top: 25vh; text-align: center; font-size: 2.5em; font-weight: 400 }
+#initial-loading   div div { height: 3px; border-radius: 3px }
+#initial-loading   span { transition: .3s; display: block }
+#initial-loading   .loader { width: 400px; margin: 10px auto; background-color: var(--bg-2); overflow: hidden; transition: .3s }
+#initial-loading   .blue-bar { width: 100px; background-color: royalblue; border-radius: 3px; animation: inital-load-animation 1s ease-in-out infinite }
+/* #endregion */
+
+
+/* #region HOMEPAGE */
+#main { width: 100%; position: absolute; top: 0; transition: .3s; z-index: 99; background-color: inherit; height: 100% }
+#main .get-started { width: 100%; padding: 25px 25px 0; background-color: var(--bg-m); }
+#main  .get-started > * { display: block; margin: 10px auto  }
+#main  .get-started > img { width: 10em; height: auto }
+#main  .get-started h1 { width: 50%; text-align: center; font-weight: normal; margin: 0.75em auto }
+#main  .get-started span { width: 75%; text-align: center }
+#main  .get-started button {  display: flex; padding: 0.5em ; justify-content: center; border-radius: 20px; font-size: 1em }
+#main   .get-started .screenshots { height: 300px; overflow-y: hidden }
+#main   .get-started .screenshots img { width: 40%; transform: rotate(22.5deg) translate(50%, 7%) }
+#main   .get-started .screenshots img:last-of-type { transform: rotate(22.5deg) translate(0, 7%) }
+
+#main .features { max-width: 1200px; margin: 10px auto; padding: 20px; display: grid; row-gap: 1em; column-gap: 1em; grid-template-columns: 1fr 1fr 1fr }
+#main  .features div { font-weight: 200 }
+#main  .features h2 { font-weight: 300 }
+#main  .features b { font-weight: 500 }
+
+@media (min-width: 800px) { 
+    #main .get-started .screenshots { height: 400px; margin-top: 1em; display: flex; justify-content: center }
+    #main .get-started .screenshots img { width: 30%; display: block; transform: scale(2) translateY(25%); flex: 0 0 }
+    #main .get-started .screenshots img:last-of-type { transform: scale(1.5) translate(12.5%, 25%) }
+}
+@media (max-width: 700px) { #main .features  { grid-template-columns: 1fr 1fr } }
+@media (max-width: 500px) { #main .features  { grid-template-columns: 1fr } }
+/* #endregion */
+
+
+/* #region HOMEPAGE */
+#app { width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; background-color: var(--bg-g) }
+#app .inner { width: 100%; height: 100%; max-width: 1600px; background-color: var(--bg-2); display: grid; grid-template-rows: 70px calc(100% - 70px) }
+#app .inner > * { background-color: var(--bg-4) }
+
+#app nav:first-of-type, #app aside { border-right: .5px solid var(--bd) }
+
+/* navs */
+#app .inner nav { background-color: var(--bg-3); user-select: none }
+#app .m-nav { padding: 0 20px; display: flex; justify-content: space-between; align-items: center }
+#app  .m-nav img, #app  .m-nav svg { width: 25px; height: auto }
+#app  .m-nav img { width: 50px; height: 50px }
+#app  .m-nav .svg-button {  padding: 12.5px; background-color: var(--bg-3); border-radius: 50%; padding-left: 10px; display: inline-block }
+#app   .m-nav .svg-button:hover { cursor: pointer }
+#app   .m-nav .svg-button:active { filter: brightness(120%) }
+
+#app .s-nav { display: none }
+/* end navs */
+
+#app  .channel-list > * { width: 100% }
+#app   .search { height: calc(2.25em + 20px); padding: 10px; margin-bottom: 10px }
+#app    .search .bar { width: 100%; height: 2.75em; background-color: var(--bg-3); border-radius: 10px; display: flex; align-items: center }
+#app    .search svg { height: 1.25em; margin: 0 2em 0 1.5em }
+#app    .search div { line-height: 2.75em; opacity: 0.5 }
+#app  .channel-list .list > div { display: flex; margin: .5em }
+#app  .channel-list .list > div:first-of-type { margin-top: 1em }
+#app   .channel-list .list > div > img { width: 3em; height: 3em; padding: .25em; margin: 0 5px }
+#app   .channel-list .list > div > div { height: 100%; flex-grow: 1 }
+#app   .channel-list .list > div > div a { font-size: 1.25em }
+#app   .channel-list .list > div > div span { display: block; font-size: .75em }
+#app   .channel-list .list > div > div hr { margin: 1em 0 .5em; border: .2px solid var(--bd); width: 100% }
+#app   .channel-list .list > div:last-of-type > div > hr { display: none }
+
+
+#app main { display: none }
+#app  main .homepage { width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center }
+#app   main .homepage div { font-weight: 300; font-size: 3em }
+#app   main .homepage  hr { border: .5px solid var(--bd); width: 100% }
+
+
+@media (min-width: 800px) {
+    #app  .inner { grid-template: 70px calc(100% - 70px) / 480px calc(100% - 480px) }
+    #app  .inner nav:last-of-type, #app  .inner main  { display: block }
+}
+@media (min-width: 1600px) {
+    #app .inner { width: calc(100% - 40px); height: calc(100% - 40px); border-radius: 10px; overflow: hidden }
+}
+/* #endregion */
+
+
+
+::-webkit-scrollbar { width: 6px; -webkit-appearance: none }
+::-webkit-scrollbar-thumb { background-color: var(--bg-2); border-radius: 3px }
