@@ -13,7 +13,8 @@ d.querySelector('#main .get-started button').onclick = () => {
     setTimeout(() => enterUsername.style.width = 'min(20em,100%)', 1)
     usernameInput.onkeypress = ({ key }) => { if (key == 'Enter') ok.click() }
     usernameInput.oninput = ({ target }) => { target.value = target.value.substring(0, 32) }
-    ok.onclick = () => {
+    ok.onclick = ({ target }) => {
+        target.focus()
         localStorage.setItem('token', sha256(crypto.getRandomValues(new Uint8Array(1024)).toString()))
         localStorage.setItem('user', JSON.stringify({ name: usernameInput.value, avatar: null }))
         d.getElementById('app').style.display = 'flex'
