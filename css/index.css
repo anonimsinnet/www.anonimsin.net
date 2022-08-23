@@ -34,7 +34,7 @@ button:active { filter: brightness(140%) }
 #initial-loading > div { margin-top: 25vh; text-align: center; font-size: 2.5em; font-weight: 400 }
 #initial-loading div div { height: 3px; border-radius: 3px }
 #initial-loading   span { transition: .3s; display: block }
-#initial-loading   .loader { width: 400px; margin: 10px auto; background-color: var(--bg-2); overflow: hidden; transition: .3s }
+#initial-loading   .loader { width: min(400px, 75%); margin: 10px auto; background-color: var(--bg-2); overflow: hidden; transition: .3s }
 #initial-loading    .blue-bar { width: 100px; background-color: royalblue; border-radius: 3px; animation: inital-load-animation 1s ease-in-out infinite }
 /* #endregion  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
 
