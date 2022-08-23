@@ -9,7 +9,7 @@ d.querySelector('#main .get-started button').onclick = () => {
     var [startButton, enterUsername] = [d.querySelector('#main .get-started .start'), d.querySelector('#main .get-started .enter-username')],
         usernameInput = enterUsername.querySelector('input'), ok = enterUsername.querySelector('.ok')
     startButton.remove()
-    enterUsername.style.display = 'flex'
+    enterUsername.style.display = 'flex'; enterUsername.querySelector('input').focus()
     setTimeout(() => enterUsername.style.width = 'min(20em,100%)', 1)
     usernameInput.onkeypress = ({ key }) => { if (key == 'Enter') ok.click() }
     usernameInput.oninput = ({ target }) => { target.value = target.value.substring(0, 32) }
