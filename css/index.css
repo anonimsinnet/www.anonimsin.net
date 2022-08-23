@@ -20,12 +20,13 @@ a:visited { color: var(--link) }
 
 input { outline: none }
 input::placeholder { color: var(--color); opacity: .4 }
-button, input { border: none; border-radius: 5px; transition: .3s; padding: 5px; background-color: var(--bg-1); cursor: pointer }
+button, input { border: none; border-radius: 5px; transition: .3s; padding: 5px; background-color: var(--bg-1); cursor: pointer; outline: none }
 button:hover { filter: brightness(120%) }
 button:active { filter: brightness(140%) }
 
 .inline-img { display: inline-flex; align-items: center }
 .inline-img svg, .inline-img img { height: 1em }
+
 
 
 /* #region -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- LOADING */
