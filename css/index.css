@@ -4,8 +4,14 @@
     --bg-2: #393E46;
     --bg-3: #202733;
     --bg-4: #111621;
-    --bd: #2f324380;
     --bg-m: #00ADB5;
+    
+    --nav-color: #b0bce2;
+    --bg-menu-popup: #272f3d;
+    --bg-menu-popup-hover: black;
+    
+    --bd: #2f324380;
+    --bd-app: #3a3e53;
     --color: #EEEEEE;
     --link: aqua
 }
@@ -72,10 +78,12 @@ button:active { filter: brightness(140%) }
 @media (max-width: 700px) { #main .features  { grid-template-columns: 1fr 1fr } }
 @media (max-width: 500px) { #main .features  { grid-template-columns: 1fr } }
 @media (max-width: 450px) { 
+    #main .get-started > img { width: 8em }
     #main .get-started h1 { font-size: 1.5em }
     #main .get-started .screenshots { height: 200px }
 }
 @media (max-width: 330px) { 
+    #main .get-started > img { width: 6em }
     #main .get-started h1 { font-size: 1.1em }
     #main .get-started .screenshots { height: 100px }
 }
@@ -84,55 +92,63 @@ button:active { filter: brightness(140%) }
 
 
 /* #region -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- APP */
-#app {
-    width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; background-color: var(--bg-g); z-index: 10; display: none;
-    opacity: 0; transform: translateY(10px) scale(120%); transition: .3s
-}
-#app .inner { width: 100%; height: 100%; max-width: 1600px; background-color: var(--bg-2); display: grid; grid-template-rows: 70px calc(100% - 70px) }
-#app .inner > * { background-color: var(--bg-4) }
-#app nav:first-of-type, #app aside { border-right: .5px solid var(--bd) }
+#app { width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; background-color: var(--bg-g); z-index: 10; display: none;
+       opacity: 0; transform: translateY(10px) scale(120%); transition: .3s }
+#app .inner { width: 100%; height: 100%; max-width: 1600px; background-color: var(--bg-4); display: flex }
+#app .inner > * { background-color: var(--bg-4); transition: .3s }
 
-
-/* 1 */
-#app .inner nav { background-color: var(--bg-3); user-select: none }
-#app .m-nav { padding: 0 20px; display: flex; justify-content: space-between; align-items: center }
-#app .m-nav  img, #app  .m-nav svg { width: 25px; height: auto }
-#app .m-nav  img { width: 50px; height: 50px }
-#app .m-nav  .svg-button {  padding: 12.5px; background-color: var(--bg-3); border-radius: 50%; padding-left: 10px; display: inline-block; transition: .3s }
-#app .m-nav   .svg-button:hover { cursor: pointer }
-#app .m-nav   .svg-button:active { filter: brightness(120%) }
-#app .s-nav { display: none }
-
-
-/* 2 / 1 */
-#app .channels { overflow: hidden }
-#app .channels > * { width: 100% }
-#app .channels .search { height: calc(2.25em + 20px); padding: 10px; margin-bottom: 10px }
-#app .channels .search .bar { width: 100%; height: 2.75em; background-color: var(--bg-3); border-radius: 10px; display: flex; align-items: center }
-#app .channels .search svg { height: 1.25em; margin: 0 2em 0 1.5em }
-#app .channels .search div { line-height: 2.75em; opacity: 0.5 }
-#app .channels .list { height: calc(100% - 2.25em - 30px); overflow: auto }
-#app .channels  .list > div /* channel */ { display: flex; align-items: center; flex-wrap: wrap; transition: .3s }
-#app .channels   .list > div:hover { cursor: pointer; background-color: var(--bg-3) }
-#app .channels   .list > div:active { filter: brightness(120%) }
-#app .channels   .list > div img { width: 3em; height: 3em; padding: .25em; margin: 0 5px }
-#app .channels   .list > div > div { height: 4em; flex-grow: 1; display: flex; align-content: center; flex-wrap: wrap }
-#app .channels   .list > div > div a { width: 100%; font-size: 1.25em }
-#app .channels   .list > div > div span { display: block; font-size: .75em }
-#app .channels  .list > hr { border: .2px solid var(--bd); width: 100% }
-#app .channels  .list > hr:last-of-type { display: none }
-
-
-/* 2 / 2 */
+#app aside { width: 100% }
 #app main { display: none }
-#app main .homepage { width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; background-color: var(--bg-3) }
+#app nav { background-color: var(--bg-3); user-select: none; height: 60px }
+
+/* CHANNELS */
+#app aside nav { padding: 0 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 0 24px -12px black }
+#app aside nav img { width: 40px; height: 40px }
+#app aside nav > div { height: 42px }
+#app aside nav  .svg-button { width: auto; height: 100%; background-color: var(--bg-3); display: inline-block }
+#app aside nav   .svg-button span { border-radius: 50%; transition: .3s; display: block; background-color: inherit }
+#app aside nav    .svg-button span:hover { cursor: pointer }
+#app aside nav    .svg-button span:active { filter: brightness(140%) }
+#app aside nav    .svg-button svg { width: 18px; height: 18px; margin: 12px; fill: var(--nav-color) }
+#app aside nav  .svg-button .popup { position: absolute; z-index: 3 }
+#app aside nav  .svg-button .popup div { padding: 10px 0; background-color: var(--bg-menu-popup); margin: 5px -36px 0 -100px; border-radius: 5px;
+                                         box-shadow: 0 0 24px -12px black; transform: scale(0.5); opacity: 0; transform-origin: right top; transition: .15s }
+#app aside nav  .svg-button .popup button { width: 100%; padding: 10px 0 10px 30px; text-align: left; display: block; font-size: .9em; border-radius: 0; background-color: inherit }
+#app aside nav  .svg-button .popup button:hover { background-color: var(--bg-menu-popup-hover) }
+
+#app aside { overflow: hidden }
+#app aside > * { width: 100% }
+#app aside .search { height: calc(2.25em + 20px); padding: 10px; margin-bottom: 10px }
+#app aside .search .bar { width: 100%; height: 2.75em; background-color: var(--bg-3); border-radius: 10px; display: flex; align-items: center }
+#app aside .search svg { height: 1.25em; margin: 0 2em 0 1.5em }
+#app aside .search div { line-height: 2.75em; opacity: 0.5 }
+#app aside .list { height: calc(100% - 2.25em - 30px); overflow: auto }
+#app aside  .list > div /* channel */ { display: flex; align-items: center; flex-wrap: wrap; transition: .3s }
+#app aside   .list > div:hover { cursor: pointer; background-color: var(--bg-3) }
+#app aside   .list > div:active { filter: brightness(120%) }
+#app aside   .list > div img { width: 3em; height: 3em; padding: .25em; margin: 0 5px }
+#app aside   .list > div > div { height: 4em; flex-grow: 1; display: flex; align-content: center; flex-wrap: wrap }
+#app aside   .list > div > div a { width: 100%; font-size: 1.25em }
+#app aside   .list > div > div span { display: block; font-size: .75em }
+#app aside  .list > hr { border: .2px solid var(--bd); width: 100% }
+#app aside  .list > hr:last-of-type { display: none }
+
+
+/* MAIN */
+#app main nav { padding: 0 20px; display: flex; justify-content: space-between; align-items: center }
+
+#app main .homepage { width: 100%; height: calc(100% - 60px); display: flex; flex-direction: column; justify-content: center; align-items: center; 
+                      background: linear-gradient(to top, var(--bg-m) 0% 6px, var(--bg-3) 6px 100%); background-color: var(--bg-3) }
 #app main  .homepage div { margin-top: -70px; font-weight: 300; font-size: 3em }
 #app main  .homepage  hr { border: .5px solid var(--bg-4); width: 100% }
 
 
-@media (min-width: 800px) {
-    #app .inner { grid-template: 70px calc(100% - 70px) / 480px calc(100% - 480px) }
-    #app .inner nav:last-of-type, #app  .inner main  { display: block }
+@media (min-width: 720px) {
+    #app aside { width: 360px; border-right: 1px solid var(--bd-app) }
+    #app main { display: block; flex-grow: 1 }
+}
+@media (min-width: 960px) {
+    #app aside { width: 480px }
 }
 @media (min-width: 1600px) {
     #app .inner { width: calc(100% - 40px); height: calc(100% - 40px); border-radius: 10px; overflow: hidden }

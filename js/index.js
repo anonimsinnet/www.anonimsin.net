@@ -25,6 +25,37 @@ d.querySelector('#main .get-started button').onclick = () => {
 // #endregion  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
 
 
+// #region -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- APP 
+/*
+app
+    channels
+        nav
+            menu
+            chat
+        list
+        search
+    content
+*/
+app = d.getElementById('app')
+Object.assign(app, { channels: app.querySelector('aside:first-of-type'), content: app.querySelector('main:first-of-type') })
+Object.assign(app.channels, { nav: app.channels.querySelector('nav'), list: app.channels.querySelector('.list'), search: app.channels.querySelector('.search') })
+Object.assign(app.channels.nav, { menu: app.channels.nav.querySelector('.button-menu'), chat: app.channels.nav.querySelector('.button-chat') })
+
+//menu popup
+app.channels.nav.menu.querySelector('span').onclick = ({ target }) => {
+    var popup = app.channels.nav.menu.querySelector('.popup div'),
+        onfocusout = (e) => {
+            if (!([popup, app.channels.nav.menu]).includes(e?.target.closest('div'))) {
+                popup.style = 'transform: scale(0.5); opacity: 0', target.closest('span').style.filter = ''; d.removeEventListener('mousedown', onfocusout, true) }
+        }
+    target.closest('span').style.filter = 'brightness(140%)'
+    if (!parseInt(popup.style.opacity)) { popup.style = 'transform: scale(1); opacity: 1'; d.addEventListener('mousedown', onfocusout, true) }
+    else onfocusout()
+    
+}
+// #endregion  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+
+
 w.onload = async () => {
     var token = localStorage.getItem('token'),
         user = localStorage.getItem('user')
