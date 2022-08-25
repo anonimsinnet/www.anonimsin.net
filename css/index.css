@@ -150,7 +150,7 @@ button:active { filter: brightness(140%) }
 #app aside > .settings .main button:first-of-type { padding: .5em; font-size: 1.5em }
 #app aside > .settings .main button img { width: 3em; height: 3em; margin: 0 .25em }
 #app aside > .settings .main button svg { width: 1.2em; margin: .5em }
-#app aside > .settings .main hr { margin: 0 1em; border-color: var(--bg-3) }
+#app aside > .settings .main hr { margin: 0 1em; border: 1px solid var(--bg-3) }
 /* ASIDE */
 
 
