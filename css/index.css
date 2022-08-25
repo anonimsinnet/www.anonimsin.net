@@ -101,37 +101,57 @@ button:active { filter: brightness(140%) }
 #app main { display: none }
 #app nav { background-color: var(--bg-3); user-select: none; height: 60px }
 
-/* CHANNELS */
-#app aside nav { padding: 0 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 0 24px -12px black }
-#app aside nav img { width: 40px; height: 40px }
-#app aside nav > div { height: 42px }
-#app aside nav  .svg-button { width: auto; height: 100%; background-color: var(--bg-3); display: inline-block }
-#app aside nav   .svg-button span { border-radius: 50%; transition: .3s; display: block; background-color: inherit }
-#app aside nav    .svg-button span:hover { cursor: pointer }
-#app aside nav    .svg-button span:active { filter: brightness(140%) }
-#app aside nav    .svg-button svg { width: 18px; height: 18px; margin: 12px; fill: var(--nav-color) }
-#app aside nav  .svg-button .popup { position: absolute; z-index: 3 }
-#app aside nav  .svg-button .popup div { padding: 10px 0; background-color: var(--bg-menu-popup); margin: 5px -36px 0 -100px; border-radius: 5px;
-                                         box-shadow: 0 0 24px -12px black; transform: scale(0.5); opacity: 0; transform-origin: right top; transition: .15s }
-#app aside nav  .svg-button .popup button { width: 100%; padding: 10px 0 10px 30px; text-align: left; display: block; font-size: .9em; border-radius: 0; background-color: inherit }
-#app aside nav  .svg-button .popup button:hover { background-color: var(--bg-menu-popup-hover) }
+/* ASIDE */
+#app aside { overflow: hidden; display: grid }
+#app aside > * { width: 100%; height: 100%; grid-row: 1 / 2; grid-column: 1 / 2; display: none; transform: translateY(2em); opacity: 0; transition: .3s; z-index: 4; background-color: var(--bg-3) }
+#app aside > .main { display: block; transform: none !important; opacity: 1; z-index: 1; background-color: inherit }
 
-#app aside { overflow: hidden }
-#app aside > * { width: 100% }
-#app aside .search { height: calc(2.25em + 20px); padding: 10px; margin-bottom: 10px }
-#app aside .search .bar { width: 100%; height: 2.75em; background-color: var(--bg-3); border-radius: 10px; display: flex; align-items: center }
-#app aside .search svg { height: 1.25em; margin: 0 2em 0 1.5em }
-#app aside .search div { line-height: 2.75em; opacity: 0.5 }
-#app aside .list { height: calc(100% - 2.25em - 30px); overflow: auto }
-#app aside  .list > div /* channel */ { display: flex; align-items: center; flex-wrap: wrap; transition: .3s }
-#app aside   .list > div:hover { cursor: pointer; background-color: var(--bg-3) }
-#app aside   .list > div:active { filter: brightness(120%) }
-#app aside   .list > div img { width: 3em; height: 3em; padding: .25em; margin: 0 5px }
-#app aside   .list > div > div { height: 4em; flex-grow: 1; display: flex; align-content: center; flex-wrap: wrap }
-#app aside   .list > div > div a { width: 100%; font-size: 1.25em }
-#app aside   .list > div > div span { display: block; font-size: .75em }
-#app aside  .list > hr { border: .2px solid var(--bd); width: 100% }
-#app aside  .list > hr:last-of-type { display: none }
+
+#app aside > .main nav { padding: 0 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 0 24px -12px black }
+#app aside > .main nav img { width: 40px; height: 40px }
+#app aside > .main nav > div { height: 42px }
+#app aside > .main nav  .svg-button { width: auto; height: 100%; background-color: var(--bg-3); display: inline-block }
+#app aside > .main nav   .svg-button span { border-radius: 50%; transition: .3s; display: block; background-color: inherit }
+#app aside > .main nav    .svg-button span:hover { cursor: pointer }
+#app aside > .main nav    .svg-button span:active { filter: brightness(140%) }
+#app aside > .main nav    .svg-button svg { width: 18px; height: 18px; margin: 12px; fill: var(--nav-color) }
+#app aside > .main nav  .svg-button .popup { position: absolute; z-index: 3 }
+#app aside > .main nav  .svg-button .popup div { padding: 10px 0; background-color: var(--bg-menu-popup); margin: 5px -36px 0 -100px; border-radius: 5px;
+                                               box-shadow: 0 0 24px -12px black; transform: scale(0.5); opacity: 0; transform-origin: right top; transition: .15s }
+#app aside > .main nav  .svg-button .popup button { width: 100%; padding: 10px 0 10px 30px; text-align: left; display: block; font-size: .9em; border-radius: 0; background-color: inherit }
+#app aside > .main nav  .svg-button .popup button:hover { background-color: var(--bg-menu-popup-hover) }
+
+#app aside > .main > * { width: 100% }
+#app aside > .main .search { height: calc(2.25em + 20px); padding: 10px; margin-bottom: 10px }
+#app aside > .main .search .bar { width: 100%; height: 2.75em; background-color: var(--bg-3); border-radius: 10px; display: flex; align-items: center }
+#app aside > .main .search svg { height: 1.25em; margin: 0 2em 0 1.5em }
+#app aside > .main .search div { line-height: 2.75em; opacity: 0.5 }
+#app aside > .main .list { height: calc(100% - 2.25em - 30px); overflow: auto }
+#app aside > .main .list > div /* channel */ { display: flex; align-items: center; flex-wrap: wrap; transition: .3s }
+#app aside > .main  .list > div:hover { cursor: pointer; background-color: var(--bg-3) }
+#app aside > .main  .list > div:active { filter: brightness(120%) }
+#app aside > .main  .list > div img { width: 3em; height: 3em; padding: .25em; margin: 0 5px }
+#app aside > .main  .list > div > div { height: 4em; flex-grow: 1; display: flex; align-content: center; flex-wrap: wrap }
+#app aside > .main  .list > div > div a { width: 100%; font-size: 1.25em }
+#app aside > .main  .list > div > div span { display: block; font-size: .75em }
+#app aside > .main .list > hr { border: .2px solid var(--bd); width: 100% }
+#app aside > .main .list > hr:last-of-type { display: none }
+
+
+#app aside > .settings { flex-direction: column; overflow: hidden }
+#app aside > .settings > span { height: 60px; font-size: 1.2em; padding: .75em; width: fit-content; cursor: pointer; user-select: none }
+#app aside > .settings > span > .page-name { height: 100%; display: grid; overflow: hidden }
+#app aside > .settings > span > .page-name * { grid-row: 1 / 2; grid-column: 1 / 2; display: flex; align-items: center }
+#app aside > .settings > span > svg { font-size: 1.6em }
+#app aside > .settings > div { flex-basis: 100%; background-color: var(--bg-4); display: grid }
+#app aside > .settings > div > * { width: 100%; height: 100%; grid-row: 1 / 2; grid-column: 1 / 2; display: none; transform: translateX(100%); transition: .3s; background-color: var(--bg-4) }
+#app aside > .settings .main { display: flex; transform: none; flex-direction: column }
+#app aside > .settings .main button { padding: 1em; font-size: 1em; border-radius: 0; background-color: inherit; display: flex; align-items: center }
+#app aside > .settings .main button:first-of-type { padding: .5em; font-size: 1.5em }
+#app aside > .settings .main button img { width: 3em; height: 3em; margin: 0 .25em }
+#app aside > .settings .main button svg { width: 1.2em; margin: .5em }
+#app aside > .settings .main hr { margin: 0 1em; border-color: var(--bg-3) }
+/* ASIDE */
 
 
 /* MAIN */
@@ -145,14 +165,12 @@ button:active { filter: brightness(140%) }
 
 @media (min-width: 720px) {
     #app aside { width: 360px; border-right: 1px solid var(--bd-app) }
+    #app aside > * { transform: translateX(-100%) }
+
     #app main { display: block; flex-grow: 1 }
 }
-@media (min-width: 960px) {
-    #app aside { width: 480px }
-}
-@media (min-width: 1600px) {
-    #app .inner { width: calc(100% - 40px); height: calc(100% - 40px); border-radius: 10px; overflow: hidden }
-}
+@media (min-width: 960px) { #app aside { width: 480px } }
+@media (min-width: 1600px) { #app .inner { width: calc(100% - 40px); height: calc(100% - 40px); border-radius: 10px; overflow: hidden } }
 /* #endregion  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
 
 
