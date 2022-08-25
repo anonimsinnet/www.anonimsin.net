@@ -121,7 +121,7 @@ app.aside.settings.page = { /* settings */
         setTimeout(() => {
             _new.style = 'display: flex; transform: none'
             app.aside.settings.oldPage.style = 'transform: translateY(100%); transition: .3s', app.aside.settings.newPage.style = 'transform: none; transition: .3s'
-        }, 11)
+        }, 20)
         this.history.pop(); app.busyFor(300)
     }
 }
