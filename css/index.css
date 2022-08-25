@@ -104,10 +104,11 @@ button:active { filter: brightness(140%) }
 /* ASIDE */
 #app aside { overflow: hidden; display: grid }
 #app aside > * { width: 100%; height: 100%; grid-row: 1 / 2; grid-column: 1 / 2; display: none; transform: translateY(2em); opacity: 0; transition: .3s; z-index: 4; background-color: var(--bg-3) }
-#app aside > .main { display: block; transform: none !important; opacity: 1; z-index: 1; background-color: inherit }
 
+#app aside > .main { min-height: 0; display: flex; flex-direction: column; transform: none; opacity: 1; z-index: 1; background-color: inherit }
+#app aside > .main > * { width: 100% }
 
-#app aside > .main nav { padding: 0 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 0 24px -12px black }
+#app aside > .main nav { flex-shrink: 0; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 0 24px -12px black }
 #app aside > .main nav img { width: 40px; height: 40px }
 #app aside > .main nav > div { height: 42px }
 #app aside > .main nav  .svg-button { width: auto; height: 100%; background-color: var(--bg-3); display: inline-block }
@@ -121,13 +122,13 @@ button:active { filter: brightness(140%) }
 #app aside > .main nav  .svg-button .popup button { width: 100%; padding: 10px 0 10px 30px; text-align: left; display: block; font-size: .9em; border-radius: 0; background-color: inherit }
 #app aside > .main nav  .svg-button .popup button:hover { background-color: var(--bg-menu-popup-hover) }
 
-#app aside > .main > * { width: 100% }
+#app aside > .main .channels { height: calc(100% - 60px) }
 #app aside > .main .search { height: calc(2.25em + 20px); padding: 10px; margin-bottom: 10px }
 #app aside > .main .search .bar { width: 100%; height: 2.75em; background-color: var(--bg-3); border-radius: 10px; display: flex; align-items: center }
 #app aside > .main .search svg { height: 1.25em; margin: 0 2em 0 1.5em }
 #app aside > .main .search div { line-height: 2.75em; opacity: 0.5 }
-#app aside > .main .list { height: calc(100% - 2.25em - 30px); overflow: auto }
-#app aside > .main .list > div /* channel */ { display: flex; align-items: center; flex-wrap: wrap; transition: .3s }
+#app aside > .main .list { overflow-y: auto; height: calc(100% - 2.25em - 30px) }
+#app aside > .main .list > div /* channel */ { display: flex; align-items: center; flex-wrap: wrap; transition: .3s}
 #app aside > .main  .list > div:hover { cursor: pointer; background-color: var(--bg-3) }
 #app aside > .main  .list > div:active { filter: brightness(120%) }
 #app aside > .main  .list > div img { width: 3em; height: 3em; padding: .25em; margin: 0 5px }
@@ -143,8 +144,8 @@ button:active { filter: brightness(140%) }
 #app aside > .settings > span > .page-name { height: 100%; display: grid; overflow: hidden }
 #app aside > .settings > span > .page-name * { grid-row: 1 / 2; grid-column: 1 / 2; display: flex; align-items: center }
 #app aside > .settings > span > svg { font-size: 1.6em }
-#app aside > .settings > div { flex-basis: 100%; background-color: var(--bg-4); display: grid }
-#app aside > .settings > div > * { width: 100%; height: 100%; grid-row: 1 / 2; grid-column: 1 / 2; display: none; transform: translateX(100%); transition: .3s; background-color: var(--bg-4) }
+#app aside > .settings > div { flex-basis: 100%; background-color: var(--bg-4); display: grid; height: calc(100% - 60px) }
+#app aside > .settings > div > * { width: 100%; height: 100%; grid-row: 1 / 2; grid-column: 1 / 2; display: none; transform: translateX(100%); transition: .3s; background-color: var(--bg-4); overflow-y: auto }
 #app aside > .settings .main { display: flex; transform: none; flex-direction: column }
 #app aside > .settings .main button { padding: 1em; font-size: 1em; border-radius: 0; background-color: inherit; display: flex; align-items: center }
 #app aside > .settings .main button:first-of-type { padding: .5em; font-size: 1.5em }
