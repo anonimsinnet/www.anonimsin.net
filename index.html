@@ -91,7 +91,7 @@
                 </div>
                 <div class="settings">
                     <span>
-                        <span class="inline-img" onclick="app.aside.settings.page.pop()">
+                        <span class="inline-img" onclick="history.back()">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z" /></svg>
                             &nbsp;<span class="page-name"><span class="old" style="transform: translateY(100%)">old-page</span><span class="new">Ayarlar</span></span>
                         </span>
@@ -142,7 +142,7 @@
                     <div>
                         <span>Çıkış yap</span>
                         <span>Çıkış yapmak istediğinizden emin misiniz? Bütün verileriniz silinecek, bu işlem geri alınamaz.</span>
-                        <div><button class="cancel" onclick="app.aside.page.pop()">İPTAL</button><button class="ok" onclick="logout(); app.aside.page.pop()">ÇIKIŞ YAP</button></div>
+                        <div><button class="cancel" onclick="history.back()">İPTAL</button><button class="ok" onclick="logout(); history.back()">ÇIKIŞ YAP</button></div>
                     </div>
                 </div>
             </aside>
