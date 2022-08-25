@@ -73,9 +73,9 @@ button.cancel { border: 2px solid var(--bd) }
 #main .get-started  .screenshots img { width: 40%; height: auto; transform: rotate(22.5deg) translate(50%, 7%) }
 #main .get-started  .screenshots img:last-of-type { transform: rotate(22.5deg) translate(0, 7%) }
 
-#main .features { max-width: 1200px; margin: 10px auto; padding: 20px; display: grid; row-gap: 1em; column-gap: 1em; grid-template-columns: 1fr 1fr 1fr }
+#main .features { max-width: 1200px; margin: 10px auto; padding: 20px; display: grid; row-gap: 1em; column-gap: 1em; grid-template-columns: 1fr 1fr 1fr; font-size: 1em }
 #main  .features div { font-weight: 200 }
-#main  .features h2 { font-weight: 300 }
+#main  .features h2 { font-weight: 300; font-size: 1.5em }
 #main  .features b { font-weight: 500 }
 
 @media (min-width: 800px) { 
