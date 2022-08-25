@@ -82,16 +82,16 @@ app.aside.main.nav.menu.querySelector('span').onclick = ({ target }) => {
 app.aside.page = { /* general */
     history: [],
     _open(name) {
-        if (app.busy) return; app.busyFor(300)
+        if (app.busy) return window.history.pushState(null, d.title, w.location.pathname)
         if (!name) return; app.aside[name].style.display = 'flex'
         app.focused = ['settings'].includes(name) ? name : 'none'
-        setTimeout(() => app.aside[name].style = 'display: flex; transform: none; opacity: 1', 1)
+        setTimeout(() => app.aside[name].style = 'display: flex; transform: none; opacity: 1', 1); app.busyFor(300)
     },
     open(name) {
         this._open(name); this.history.push(name); window.history.pushState(null, d.title, w.location.pathname)
     },
     pop() {
-        var _pop = this.history.pop(), _new = this.history.slice(-1)[0]; if (!_pop || _pop == _new) return
+        var _pop = this.history.pop(), _new = this.history.slice(-1)[0]; if (!_pop || _pop == _new) return window.history.pushState(null, d.title, w.location.pathname)
         app.aside[_pop].style = 'display: flex'; setTimeout(() => app.aside[_pop].style = '', 300); this._open(_new)
     }
 }
@@ -111,7 +111,7 @@ app.aside.settings.page = { /* settings */
         this.history.push(name); app.busyFor(300)
     },
     pop() {
-        if (app.busy) return
+        if (app.busy) return window.history.pushState(null, d.title, w.location.pathname)
         var [_current, _new] = [undefined, ...this.history.slice(-2)].reverse().slice(0, 2)
         if (!_current) { app.focused = 'none'; return app.aside.page.pop() }
         _new = app.aside.settings.querySelector('.' + (_new ? _new : 'main')), _current = app.aside.settings.querySelector('.' + _current)
