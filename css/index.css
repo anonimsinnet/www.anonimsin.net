@@ -3,13 +3,17 @@
     --bg-1: #222831;
     --bg-2: #393E46;
     --bg-3: #202733;
+    --bg-3-a: #20273380;
     --bg-4: #111621;
+    --bg-4-a: #11162180;
     --bg-m: #00ADB5;
     
     --nav-color: #b0bce2;
     --bg-menu-popup: #272f3d;
     --bg-menu-popup-hover: black;
     
+    --shadow-1:  0 0 24px -12px #0008;
+
     --bd: #2f324380;
     --bd-app: #3a3e53;
     --color: #EEEEEE;
@@ -29,6 +33,10 @@ input::placeholder { color: var(--color); opacity: .4 }
 button, input { border: none; border-radius: 5px; transition: .3s; padding: 5px; background-color: var(--bg-1); cursor: pointer; outline: none }
 button:hover { filter: brightness(120%) }
 button:active { filter: brightness(140%) }
+
+button.ok, button.cancel { padding: .5em 1em; font-size: 1em }
+button.ok { background-color: var(--bg-m) }
+button.cancel { border: 2px solid var(--bd) }
 
 .inline-img { display: inline-flex; align-items: center }
 .inline-img svg, .inline-img img { height: 1em }
@@ -108,7 +116,7 @@ button:active { filter: brightness(140%) }
 #app aside > .main { min-height: 0; display: flex; flex-direction: column; transform: none; opacity: 1; z-index: 1; background-color: inherit }
 #app aside > .main > * { width: 100% }
 
-#app aside > .main nav { flex-shrink: 0; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 0 24px -12px black }
+#app aside > .main nav { flex-shrink: 0; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: var(--shadow-1) }
 #app aside > .main nav img { width: 40px; height: 40px }
 #app aside > .main nav > div { height: 42px }
 #app aside > .main nav  .svg-button { width: auto; height: 100%; background-color: var(--bg-3); display: inline-block }
@@ -118,7 +126,7 @@ button:active { filter: brightness(140%) }
 #app aside > .main nav    .svg-button svg { width: 18px; height: 18px; margin: 12px; fill: var(--nav-color) }
 #app aside > .main nav  .svg-button .popup { position: absolute; z-index: 3 }
 #app aside > .main nav  .svg-button .popup div { padding: 10px 0; background-color: var(--bg-menu-popup); margin: 5px -36px 0 -100px; border-radius: 5px;
-                                               box-shadow: 0 0 24px -12px black; transform: scale(0.5); opacity: 0; transform-origin: right top; transition: .15s; display: none }
+                                               box-shadow: var(--shadow-1); transform: scale(0.5); opacity: 0; transform-origin: right top; transition: .15s; display: none }
 #app aside > .main nav  .svg-button .popup button { width: 100%; padding: 10px 0 10px 30px; text-align: left; display: block; font-size: .9em; border-radius: 0; background-color: inherit }
 #app aside > .main nav  .svg-button .popup button:hover { background-color: var(--bg-menu-popup-hover) }
 
@@ -140,18 +148,25 @@ button:active { filter: brightness(140%) }
 
 
 #app aside > .settings { flex-direction: column; overflow: hidden }
-#app aside > .settings > span { height: 60px; font-size: 1.2em; padding: .75em; width: fit-content; cursor: pointer; user-select: none }
-#app aside > .settings > span > .page-name { height: 100%; display: grid; overflow: hidden }
-#app aside > .settings > span > .page-name * { grid-row: 1 / 2; grid-column: 1 / 2; display: flex; align-items: center }
-#app aside > .settings > span > svg { font-size: 1.6em }
-#app aside > .settings > div { flex-basis: 100%; background-color: var(--bg-4); display: grid; height: calc(100% - 60px) }
+#app aside > .settings > span { display: block; box-shadow: var(--shadow-1); z-index: 5 }
+#app aside > .settings > span > span { height: 60px; font-size: 1.2em; padding: .75em; width: fit-content; cursor: pointer; user-select: none }
+#app aside > .settings > span > span > .page-name { height: 100%; display: grid; overflow: hidden }
+#app aside > .settings > span > span > .page-name * { grid-row: 1 / 2; grid-column: 1 / 2; display: flex; align-items: center }
+#app aside > .settings > span > span > svg { font-size: 1.6em }
+#app aside > .settings > div { flex-basis: 100%; background-color: var(--bg-4); display: grid; height: calc(100% - 60px); overflow: hidden auto }
 #app aside > .settings > div > * { width: 100%; height: 100%; grid-row: 1 / 2; grid-column: 1 / 2; display: none; transform: translateX(100%); transition: .3s; background-color: var(--bg-4); overflow-y: auto }
-#app aside > .settings .main { display: flex; transform: none; flex-direction: column; overflow: hidden  }
-#app aside > .settings .main button { padding: 1em; font-size: 1em; border-radius: 0; background-color: inherit; display: flex; align-items: center }
+#app aside > .settings .main { display: flex; transform: none; flex-direction: column }
+#app aside > .settings .main button { padding: 1em; font-size: 1em; border-radius: 0; background-color: inherit; display: flex; align-items: center; flex-shrink: 0 }
 #app aside > .settings .main button:first-of-type { padding: .5em; margin-right: .5em; font-size: 1.5em; overflow: hidden }
 #app aside > .settings .main button img { width: 3em; height: 3em; margin: 0 .25em }
 #app aside > .settings .main button svg { width: 1.2em; margin: .5em }
 #app aside > .settings .main hr { margin: 0 1em; border: 1px solid var(--bg-3) }
+
+#app aside > .logout { width: 100%; height: 100%; transform: scale(80%); background-color: var(--bg-4-a); align-items: center; justify-content: center; outline: max(100vw, 100vh) solid var(--bg-4-a) }
+#app aside > .logout > div { width: 80%; padding: 1em; background-color: var(--bg-3); border-radius: 10px; box-shadow: var(--shadow-1) }
+#app aside > .logout span:first-of-type { margin-bottom: .5em; font-size: 1.5em; display: block }
+#app aside > .logout span:last-of-type { margin-bottom: 2em; font-size: .9em; display: block }
+#app aside > .logout div div { display: flex; justify-content: flex-end; flex-wrap: wrap; row-gap: .5em; column-gap: .5em }
 /* ASIDE */
 
 

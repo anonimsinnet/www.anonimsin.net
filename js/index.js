@@ -45,8 +45,8 @@ app
     /* app aside,main */
     /* */ Object.assign(app, { aside: app.querySelector('aside'), main: app.querySelector('main') })
     /* -------------- */
-        /* app aside main,settings */
-        /* */ Object.assign(app.aside, { main: app.aside.querySelector('.main'), settings: app.aside.querySelector('.settings') })
+        /* app aside main,settings,lgout */
+        /* */ Object.assign(app.aside, { main: app.aside.querySelector('.main'), settings: app.aside.querySelector('.settings'), logout: app.aside.querySelector('.logout') })
         /* ----------------------- */
             /* app aside settings new-page,old-page*/
             /* */ Object.assign(app.aside.settings, { newPage: app.aside.querySelector('span > .page-name > .new'), oldPage: app.aside.querySelector('span > .page-name > .old') })
@@ -69,7 +69,7 @@ app.aside.main.nav.menu.querySelector('span').onclick = ({ target }) => {
                 setTimeout(() => {
                     popup.style = 'display: block; transform: scale(0.5); opacity: 0', target.closest('span').style.filter = ''; d.removeEventListener('click', onfocusout, true)
                     setTimeout(() => popup.style.display = 'none', 300)
-                }, !!(e?.target.tagName == 'BUTTON') * 300)
+                }, !!(e?.target.tagName == 'BUTTON') * 100)
             }
         }
     target.closest('span').style.filter = 'brightness(140%)'
@@ -83,7 +83,7 @@ app.aside.page = { /* general */
     _open(name) {
         if (app.busy) return; app.busyFor(300)
         if (!name) return; app.aside[name].style.display = 'flex'
-        app.focused = ['settings'].includes(name) ? name : none
+        app.focused = ['settings'].includes(name) ? name : 'none'
         setTimeout(() => app.aside[name].style = 'display: flex; transform: none; opacity: 1', 1)
     },
     open(name) {
