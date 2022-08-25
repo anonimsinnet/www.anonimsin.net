@@ -65,11 +65,15 @@ app.busyFor = (ms) => { app.busy = true; setTimeout(() => app.busy = false, ms) 
 app.aside.main.nav.menu.querySelector('span').onclick = ({ target }) => {
     var popup = app.aside.main.nav.menu.querySelector('.popup div'),
         onfocusout = (e) => {
-            if (!([popup, app.aside.main.nav.menu]).includes(e?.target.closest('div'))) {
-                popup.style = 'transform: scale(0.5); opacity: 0', target.closest('span').style.filter = ''; d.removeEventListener('mousedown', onfocusout, true) }
+            if (!([popup, app.aside.main.nav.menu]).includes(e?.target.closest('div')) || e?.target.tagName == 'BUTTON') {
+                setTimeout(() => {
+                    popup.style = 'display: block; transform: scale(0.5); opacity: 0', target.closest('span').style.filter = ''; d.removeEventListener('click', onfocusout, true)
+                    setTimeout(() => popup.style.display = 'none', 300)
+                }, !!(e?.target.tagName == 'BUTTON') * 300)
+            }
         }
     target.closest('span').style.filter = 'brightness(140%)'
-    if (!parseInt(popup.style.opacity)) { popup.style = 'transform: scale(1); opacity: 1'; d.addEventListener('mousedown', onfocusout, true) }
+    if (!parseInt(popup.style.opacity)) { popup.style.display = 'block'; setTimeout(() => popup.style = 'display: block; transform: scale(1); opacity: 1', 1); d.addEventListener('click', onfocusout, true) }
     else onfocusout()
 }
 

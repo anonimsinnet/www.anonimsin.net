@@ -118,7 +118,7 @@ button:active { filter: brightness(140%) }
 #app aside > .main nav    .svg-button svg { width: 18px; height: 18px; margin: 12px; fill: var(--nav-color) }
 #app aside > .main nav  .svg-button .popup { position: absolute; z-index: 3 }
 #app aside > .main nav  .svg-button .popup div { padding: 10px 0; background-color: var(--bg-menu-popup); margin: 5px -36px 0 -100px; border-radius: 5px;
-                                               box-shadow: 0 0 24px -12px black; transform: scale(0.5); opacity: 0; transform-origin: right top; transition: .15s }
+                                               box-shadow: 0 0 24px -12px black; transform: scale(0.5); opacity: 0; transform-origin: right top; transition: .15s; display: none }
 #app aside > .main nav  .svg-button .popup button { width: 100%; padding: 10px 0 10px 30px; text-align: left; display: block; font-size: .9em; border-radius: 0; background-color: inherit }
 #app aside > .main nav  .svg-button .popup button:hover { background-color: var(--bg-menu-popup-hover) }
 
