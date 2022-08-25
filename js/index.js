@@ -99,7 +99,7 @@ app.aside.settings.page = { /* settings */
     open(name) {
         if (app.busy) return
         var _current = this.history.slice(-1)[0]; _current = app.aside.settings.querySelector('.' + (_current ? _current : 'main')),
-            _new = app.aside.settings.querySelector('.' + name)
+            _new = app.aside.settings.querySelector('.' + name); window.history.pushState(null, d.title, w.location.pathname)
         _current.style.transform = 'translateX(-100%)', _new.style = 'display: flex'
         app.aside.settings.newPage.innerText = _new.getAttribute('data-name'), app.aside.settings.oldPage.innerText = _current.getAttribute('data-name')
         app.aside.settings.oldPage.style = '', app.aside.settings.newPage.style = 'transform: translateY(100%)'
@@ -120,7 +120,7 @@ app.aside.settings.page = { /* settings */
         setTimeout(() => {
             _new.style = 'display: flex; transform: none'
             app.aside.settings.oldPage.style = 'transform: translateY(100%); transition: .3s', app.aside.settings.newPage.style = 'transform: none; transition: .3s'
-        }, 1)
+        }, 11)
         this.history.pop(); app.busyFor(300)
     }
 }
@@ -157,4 +157,6 @@ w.onload = async () => {
         d.getElementById('main').style.display = 'none'; d.getElementById('app').style.display = 'flex'
         setTimeout(() => d.getElementById('app').style = 'display: flex; opacity: 1; transform: translateY(0) scale(100%)', 1)
     }
+
+    if ('serviceWorker' in navigator) navigator.serviceWorker.register('/serviceWorker.js')
 }
