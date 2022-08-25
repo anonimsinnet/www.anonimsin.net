@@ -1,4 +1,5 @@
 ﻿const d = document, w = window
+var search = new URLSearchParams(window.location.search)
 
 const encryptAES = (text, key) => CryptoJS.AES.encrypt(text, key).toString()
 const decryptAES = (encryptedBase64, key) => CryptoJS.AES.decrypt(encryptedBase64, key).toString(CryptoJS.enc.Utf8)
@@ -154,8 +155,12 @@ w.onload = async () => {
     setTimeout(() => d.querySelector('#initial-loading').remove(), 300)
 
     if (token) {
-        d.getElementById('main').style.display = 'none'; d.getElementById('app').style.display = 'flex'
-        setTimeout(() => d.getElementById('app').style = 'display: flex; opacity: 1; transform: translateY(0) scale(100%)', 1)
+        if (search.get('utm_source'))
+            d.getElementById('main').style.display = 'none', app.style = 'display: flex; opacity: 1; transform: translateY(0) scale(100%); transition: 0'
+        else {
+            d.getElementById('main').style.display = 'none', app.style.display = 'flex'
+            setTimeout(() => d.getElementById('app').style = 'display: flex; opacity: 1; transform: translateY(0) scale(100%)', 1)
+        }
     }
 
     if ('serviceWorker' in navigator) navigator.serviceWorker.register('/serviceWorker.js')
